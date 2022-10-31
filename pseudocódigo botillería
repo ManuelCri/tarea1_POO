@@ -1,0 +1,112 @@
+Algoritmo InventarioBotilleria
+    Dimension Inventario[5,4]
+    Definir Inventario como Entero
+    Dimension articulos[5]
+    Definir cantidad, Codigo como Entero
+    Definir OpcionMenu Como Entero
+    Definir seguir Como Logico
+    
+    llenarInventario(Inventario, articulos)
+    
+    seguir <- true
+    
+            Mientras (seguir)
+                Limpiar Pantalla
+                Escribir "-----------------MENU-----------------"
+                Escribir "---1.- MOSTRAR INVENTARIO COMPLETO---"
+                Escribir "-------2.- ENTRADA DE ARTICULO-------"
+                Escribir "--------3.- SALIDA DE ARTICULO--------"
+                Escribir "--------------4.- SALIR--------------"
+                Escribir "Elija una Opcion (1-4): "
+                Leer OpcionMenu
+
+                          Segun OpcionMenu
+                                    1:
+                                      mostrarInventario(Inventario, articulos)
+                                      Escribir "Pulsar tecla para volver al menu..."
+                                      esperar Tecla
+                                    2:
+                                      Escribir "Codigo del Articulo a Entrar: "  sin saltar
+                                      Leer codigo
+                                      Escribir "Cantidad de Articulo a Entrada: " sin saltar
+                                      Leer cantidad
+                                      EntradaInventario(Inventario, articulos, cantidad, codigo)
+
+                                    3:
+                                      Escribir "Codigo del Articulo a Salir: "  sin saltar
+                                      Leer codigo
+                                      Escribir "Cantidad de Articulo a Salir: " sin saltar
+                                      Leer cantidad
+                                      SalidaInventario(Inventario, articulos, cantidad, codigo)
+                                    4:
+                                      seguir <- false
+                                    De Otro Modo:
+                                      Limpiar Pantalla
+                                      Escribir ""
+                                      Escribir "No es una Opcion correcta"
+                                      Escribir "Intentalo de nuevo Pulsando una tecla..."
+                                      Esperar Tecla
+                          FinSegun
+            FinMientras
+FinAlgoritmo
+
+Funcion LLenarInventario(Inventario, articulos)
+        articulos[1]    <- "VINO"
+        Inventario[1,1] <- "10"
+
+        articulos[2]    <- "CERVEZA"
+        Inventario[2,1] <- "30"
+
+        articulos[3]    <- "BEBIDAS"
+        Inventario[3,1] <- "20"
+
+        articulos[4]    <- "HIELO"
+        Inventario[4,1] <- "39"
+
+        articulos[5]    <- "CIGARROS"
+        Inventario[5,1] <- "25"
+        
+        articulos[6]    <- "PISCO"
+        Inventario[6,1] <- "6"
+        
+        articulos[7]    <- "AGUA"
+        Inventario[7,1] <- "15"
+
+FinFuncion
+
+Funcion  mostrarInventario(Inventario, articulos)
+        Definir i Como Entero
+        Limpiar Pantalla
+        
+        Para i<-1 Hasta 5 Con Paso 1
+                Escribir "CÓDIGO: " + ConvertirATexto((i))
+                Escribir "ARTÍCULO: " + articulos[i]
+                Escribir "ESPACIO EN ALMACEN: " + ConvertirATexto(Inventario[i,1])
+                Escribir "UNIDADES QUE EXISTEN: " + ConvertirATexto(Inventario[i,3])
+                Escribir "------------------------------------------------------"
+        FinPara
+FinFuncion
+
+Funcion EntradaInventario(Inventario, articulos, cantidad, codigo)
+        Si (Inventario[codigo,3]>=unidades) Entonces
+              Inventario[codigo,2] <- Inventario[codigo,2]+unidades
+              Inventario[codigo,3] <- inventraio[codigo,3]-unidades
+              Escribir ""
+              Escribir articulos[codigo]
+              Escribir "----------------------------------------"
+              Escribir "ESPACIO EN ALMACEN: " + ConvertirATexto(almacen[codigo,1])
+              Escribir "UNIDADES QUE EXISTEN: " + ConvertirATexto(almacen[codigo,3])
+              Escribir ""
+              Escribir "Pulsar tecla para continuar...."
+              Esperar Tecla
+        SiNo
+              Escribir
+              
+FinFuncion
+
+Funcion SalidaInventario(Inventario, articulos, cantidad, codigo)
+
+FinFuncion
+
+
+
