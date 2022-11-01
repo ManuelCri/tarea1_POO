@@ -81,7 +81,7 @@ Funcion  mostrarInventario(Inventario, articulos)
         Para i<-1 Hasta 5 Con Paso 1
                 Escribir "CÓDIGO: " + ConvertirATexto((i))
                 Escribir "ARTÍCULO: " + articulos[i]
-                Escribir "ESPACIO EN ALMACEN: " + ConvertirATexto(Inventario[i,1])
+                Escribir "ESPACIO EN INVENTARIO: " + ConvertirATexto(Inventario[i,1])
                 Escribir "UNIDADES QUE EXISTEN: " + ConvertirATexto(Inventario[i,3])
                 Escribir "------------------------------------------------------"
         FinPara
@@ -90,21 +90,47 @@ FinFuncion
 Funcion EntradaInventario(Inventario, articulos, cantidad, codigo)
         Si (Inventario[codigo,3]>=unidades) Entonces
               Inventario[codigo,2] <- Inventario[codigo,2]+unidades
-              Inventario[codigo,3] <- inventraio[codigo,3]-unidades
               Escribir ""
               Escribir articulos[codigo]
               Escribir "----------------------------------------"
-              Escribir "ESPACIO EN ALMACEN: " + ConvertirATexto(almacen[codigo,1])
-              Escribir "UNIDADES QUE EXISTEN: " + ConvertirATexto(almacen[codigo,3])
+              Escribir "ESPACIO EN INVENTARIO: " + ConvertirATexto(Inventario[codigo,1])
+              Escribir "UNIDADES QUE EXISTEN: " + ConvertirATexto(Inventario[codigo,3])
               Escribir ""
               Escribir "Pulsar tecla para continuar...."
               Esperar Tecla
         SiNo
-              Escribir
-              
+              Escribir""
+              Escribir articulos[codigo]
+              Escribir "----------------------------------------"
+              Escribir "NO HAY ESPACIO SUFICIENTE EN EL INVENTARIO"
+              Escribir "UNIDADES QUE EXISTEN: " ConvertirATexto(Inventario[codigo,3])
+              Escribir ""
+              Escribir "Pulsar tecla para continuar..."
+              Esperar Tecla
+        FinSi
 FinFuncion
 
 Funcion SalidaInventario(Inventario, articulos, cantidad, codigo)
+        Si (Inventario[codigo,2]>=unidades) Entonces
+              Inventario[codigo,2] <- Inventario[codigo,1]-Inventario[codigo,3]
+              Escribir ""
+              Escribir articulos[codigo]
+              Escribir "----------------------------------------"
+              Escribir "ESPACIO EN INVENTARIO: " + ConvertirATexto(Inventario[codigo,1])
+              Escribir "EXISTEN EN INVENTARIO: " + ConvertirATexto(Inventario[codigo,2])
+              Escribir ""
+              Escribir "Pulsar tecla para continuar...."
+              Esperar Tecla
+        SiNo
+              Escribir ""
+              Escribir articulos[codigo]
+              Escribir "----------------------------------------"
+              Escribir "NO HAY SUFICIENTES UNIDADES EN INVENTARIO"
+              Escribir "EXISTEN EN INVENTARIO: " + ConvertirATexto(Inventario[codigo,2])
+              Escribir ""
+              Escribir "Pulsar tecla para continuar...."
+              Esperar Tecla
+        FinSi
 
 FinFuncion
 
